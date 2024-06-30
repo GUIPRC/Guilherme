@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+   
+    
+struct Telefone {
+	int dd;
+    int tel;
+    };
+    
+struct Pessoa {
+    char nome[30];
+    char email[30];
+    struct Telefone fone;
+    };
+
+    int main() {
+    struct Pessoa contatos[50];
+    int opcao;
+    int indice=0;
+    int i,j,encontrou=0;
+    int cod;
+    char pesq[30];
+
+         do {
+          system("cls");
+          printf("AGENDA DE CONTATOS\n");
+
+          printf("\n ||| MENU ||| \n \n");
+          printf("   ( 1 ) CADASTRAR CONTATO \n");
+          printf("   ( 2 ) CONSULTAR UM CONTATO POR NOME \n");
+          printf("   ( 3 ) LISTAR TODOS OS CONTATOS \n");
+          printf("   ( 4 ) EXCLUIR UM CONTATO \n");
+          printf("   ( 5 ) SAIR \n");
+
+
+          printf("\n ESCOLHA UMA OPCAO:");
+          scanf("%d",&opcao);
+          fflush(stdin);
+
+          switch(opcao) {
+            case 1:
+                system("cls");
+                printf("\n || CADASTRO DE CONTATO || ");
+                printf("\n CODIGO:%i\n",indice);
+                printf("\n NOME:");
+                gets(contatos[indice].nome);
+                printf("\n EMAIL:");
+                gets(contatos[indice].email);
+                printf("\n DD:");
+                scanf("%d",&contatos[indice].fone.dd);
+                printf("\n TELEFONE:");
+                scanf("%d",&contatos[indice].fone.tel);
+                indice++;
+                fflush(stdin);
+                break;
+
+            case 2:
+                system("cls");
+                printf("\n || CONSULTAR UM CONTATO POR NOME || ");
+                printf("\nPESQUISAR:");
+                gets(pesq);
+                for(i=0; i<indice; i++){
+				if(strcmp(pesq,contatos[i].nome)==0){
+                printf("\n NOME:%s",contatos[i].nome);
+                printf("\n EMAIL:%s",contatos[i].email);
+                printf("\n TEL:%d %d",contatos[i].fone.dd,contatos[i].fone.tel);
+                encontrou = 1;
+                }else if(encontrou==0){
+                    
+                    }
+                    printf("\n");
+                    system("pause");
+                    break;   
+				
+				
+				}        
+
+            case 3:
+                printf(" || LISTAR TODOS OS CONTATOS ||  \n");
+                for(i=0; i<indice; i++){
+                printf("\n CODIGO: %i",i);
+                printf("\n NOME:%s",contatos[i].nome);
+                printf("\n EMAIL:%s",contatos[i].email);
+                printf("\n TEL:%d %d",contatos[i].fone.dd,contatos[i].fone.tel);
+                printf("\n--------------------------------\n");
+                }
+                system("pause");
+                break;
+
+            case 4:
+                printf("\n  || EXCLUIR CONTATO || \n");
+                printf("\n  ||INFORMA O CODIGO ||:");
+                scanf("%i",&cod);
+                printf("\n NOME:%s",contatos[cod].nome);
+                printf("\n EMAIL:%s",contatos[cod].email);
+                printf("\n TEL:%d %d",contatos[cod].fone.dd,contatos[cod].fone.tel);
+                printf("\n Deseja EXCLUIR CONTATO? SIM(1)/NAO(2): ");
+                scanf("%i",&i);
+                indice--;
+                  
+                break;
+            
+			case 5:
+            break;
+            }
+
+        }while(opcao!=5);
+        
+         return 0;}
